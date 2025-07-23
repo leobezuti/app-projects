@@ -271,7 +271,7 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle>Professional</CardTitle>
                   <div className="text-3xl font-bold">
-                    $99<span className="text-sm font-normal text-gray-500">/month</span>
+                    $80<span className="text-sm font-normal text-gray-500">/month</span>
                   </div>
                   <CardDescription>For growing businesses</CardDescription>
                 </CardHeader>
