@@ -9,12 +9,22 @@ phases:
       - npm run build
   post_build:
     commands:
+      - ls -la .next  
       - mkdir -p dist  
-      - cp -r .next/standalone/* dist/  
-      - cp -r .next/static dist/.next/static 
-      - cp -r public dist/  
+      
+      - if [ -d ".next/standalone" ]; then
+          cp -r .next/standalone/* dist/;
+          cp -r .next/static dist/.next/static;
+        elif [ -d "out" ]; then
+          cp -r out/* dist/;
+        else
+          cp -r .next/* dist/;
+        fi
+      
+      - cp -r public/* dist/  
+      - ls -la dist  
 
 artifacts:
-  base-directory: dist  
+  base-directory: dist
   files:
     - '**/*'
