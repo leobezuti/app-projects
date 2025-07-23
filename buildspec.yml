@@ -4,13 +4,17 @@ phases:
   install:
     commands:
       - npm install --legacy-peer-deps
-
   build:
     commands:
       - npm run build
+  post_build:
+    commands:
+      - mkdir -p dist  
+      - cp -r .next/standalone/* dist/  
+      - cp -r .next/static dist/.next/static 
+      - cp -r public dist/  
 
 artifacts:
+  base-directory: dist  
   files:
     - '**/*'
-  base-directory: dist
-  discard-paths: no
