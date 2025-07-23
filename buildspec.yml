@@ -3,28 +3,15 @@ version: 0.2
 phases:
   install:
     commands:
-      - npm install --legacy-peer-deps
+      - npm install
+
   build:
     commands:
       - npm run build
-  post_build:
-    commands:
-      - ls -la .next  
-      - mkdir -p dist  
+      - mkdir -p dist
+      - cp -r out/* dist/
+      - cp -r public/* dist/
       
-      - if [ -d ".next/standalone" ]; then
-          cp -r .next/standalone/* dist/;
-          cp -r .next/static dist/.next/static;
-        elif [ -d "out" ]; then
-          cp -r out/* dist/;
-        else
-          cp -r .next/* dist/;
-        fi
-      
-      - cp -r public/* dist/  
-      - ls -la dist  
-
 artifacts:
   base-directory: dist
-  files:
-    - '**/*'
+  files: '**/*'
